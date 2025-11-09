@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>메종 루크스 — 온라인 부티크</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo">Maison<br><span class="logo-sub">Collection</span></div>
+        <div class="tag">시간이 지나도 변치 않는 품격</div>
+      </div>
+      <nav class="nav">
+        <a href="#" id="homeBtn" style="display:none;">홈</a>
+        <a href="#" id="newProductsBtn">신상품</a>
+        <a href="#">브랜드 소개</a>
+        <button id="openCart" class="cart-btn">👜 장바구니 <span id="cartCount" class="cart-count">0</span></button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 추천 상품 -->
+      <section id="recommendedProducts">
+        <div class="section-header">
+          <h2>추천 상품</h2>
+          <div class="subtext">당신을 위한 특별한 선택</div>
+        </div>
+        <div class="grid" id="productGrid"></div>
+      </section>
+
+      <!-- 신상품 -->
+      <section id="newProducts" style="display:none;">
+        <div class="section-header">
+          <h2>신상품</h2>
+        </div>
+        <div class="grid" id="newProductGrid"></div>
+      </section>
+
+      <!-- 상세 화면 -->
+      <section id="productDetail" style="display:none;">
+        <button id="backHome" class="btn btn-ghost" style="margin-bottom:12px;">← 홈으로 돌아가기</button>
+        <div id="detailContent"></div>
+      </section>
+
+      <section id="about">
+        <h3>메종 루크스 소개</h3>
+        <p>메종 루크스는 고품질의 디자인을 제공하는 온라인 부티크입니다.</p>
+      </section>
+    </main>
+
+    <!-- 장바구니 -->
+    <div class="drawer" id="cartDrawer" aria-hidden="true">
+      <h3>장바구니</h3>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <div>총 금액</div>
+        <div id="cartTotal">₩0</div>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-ghost" id="closeCart">계속 쇼핑하기</button>
+        <button class="btn btn-primary" id="checkoutBtn">결제하기</button>
+      </div>
+    </div>
+
+    <!-- 결제 모달 -->
+    <div id="paymentModal" class="qr-modal" aria-hidden="true">
+      <div class="qr-backdrop" id="pmBackdrop"></div>
+      <div class="qr-box">
+        <button class="qr-close" id="pmClose">✕</button>
+        <h3>계좌 이체 결제</h3>
+        <p style="color:#555;">입금 계좌: <strong>카카오뱅크 7777-02-7609163</strong></p>
+        <p style="font-size:14px;color:#999;">(예금주: 박준수)</p>
+
+        <form id="paymentForm">
+          <label>이름<input type="text" name="entry.1370334034" required /></label>
+          <label>전화번호<input type="tel" name="entry.367871240" required placeholder="010-1234-5678" /></label>
+          <label>주소<textarea name="entry.527239213" required placeholder="개인통관번호와 배송지주소를 입력해주세요."></textarea></label>
+          <input type="hidden" name="entry.2049491400" id="productsInput" />
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;">결제 정보 제출</button>
+        </form>
+
+        <p id="submitMsg" class="hidden" style="margin-top:10px;color:green;">결제 정보가 제출되었습니다. 입금 확인 후 배송이 진행됩니다.</p>
+      </div>
+    </div>
+
+    <footer>
+      © 메종 루크스 · 품격을 담은 디자인
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
